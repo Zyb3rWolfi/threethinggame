@@ -24,6 +24,21 @@ public class PlayerScript : MonoBehaviour
         
     }
 
+    private void OnEnable()
+    {
+        MixedDrinkManager.cokeAction += ManageMixer;
+    }
+
+    private void OnDisable()
+    {
+        MixedDrinkManager.cokeAction -= ManageMixer;
+
+    }
+
+    private void ManageMixer(MixerSerializable mixer)
+    {
+    }
+
     public void Wind(InputAction.CallbackContext context){ 
       if (context.started == true){
         if (flying) return;

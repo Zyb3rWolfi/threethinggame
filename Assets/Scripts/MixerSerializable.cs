@@ -9,10 +9,6 @@ public class MixerSerializable : ScriptableObject
     public DebuffDrink alcohol;
     public BuffDrink mixer;
 
-    // debuffs
-    public float speedDebuff;
-    
-
     /*
     public MixedDrink
     int debuff = mixedDrink.speedDebuff
