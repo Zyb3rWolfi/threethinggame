@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScrollingScript : MonoBehaviour
 {
-    public float speed;
+    [SerializeField] private float speed;
     public float swapDistance = 10f; // Distance threshold for swapping materials
     public bool isMoving = true;
 
@@ -48,6 +48,20 @@ public class ScrollingScript : MonoBehaviour
             bgRenderer.material = material1;
         }
         useMaterial1 = !useMaterial1;
+    }
+
+    public void OnEnable()
+    {
+        PlayerScript.modifySpeed += ChangeSpeed;
+    }
+
+    public void OnDisable()
+    {
+        PlayerScript.modifySpeed -= ChangeSpeed;
+    }
+
+    private void ChangeSpeed(float newSpeed) {
+        speed = newSpeed;
     }
 }
 
