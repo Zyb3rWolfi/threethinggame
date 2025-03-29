@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class ScrollingScript : MonoBehaviour
@@ -19,6 +20,8 @@ public class ScrollingScript : MonoBehaviour
 
     private bool useMaterial1 = true;
     private float scrolledDistance = 0f;
+
+    [SerializeField] private float speed_multp;
 
     // Update is called once per frame
     void Update()
@@ -53,16 +56,22 @@ public class ScrollingScript : MonoBehaviour
     public void OnEnable()
     {
         PlayerScript.modifySpeed += ChangeSpeed;
-        MixedDrinkManager.mixerSelected += ManageMix;
+        MixedDrinkManager.mixerSelected += manageModifiers;
     }
 
     public void OnDisable()
     {
         PlayerScript.modifySpeed -= ChangeSpeed;
+        MixedDrinkManager.mixerSelected -= manageModifiers;
     }
 
     private void ChangeSpeed(float newSpeed) {
         speed = newSpeed;
+    }
+
+    private void manageModifiers(Modifiers modifiers)
+    {
+        speed_multp = modifiers.speed;
     }
 }
 

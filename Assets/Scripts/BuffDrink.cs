@@ -8,6 +8,4 @@ using UnityEngine.Rendering.Universal.Internal;
 public class BuffDrink : DrinkSerializable
 {
     public float speedBuff;
-    public float catapultIncrease;
-    public float stomachTickDecrease;
 }

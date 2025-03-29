@@ -6,10 +6,5 @@ using UnityEngine;
 public class Modifiers : ScriptableObject
 {
     public float speed;
-    public float catapultIncrease;
-    public float catapultDecrease;
-    public float triggerChance;
-    public float stomachTickIncrease;
-    public float stomachTickDecrease;
-
+    public float triggerChance; 
 }

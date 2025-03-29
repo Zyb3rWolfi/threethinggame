@@ -12,9 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8cb37f441f0e90458a1ce8c5cb21606, type: 3}
   m_Name: modifier
   m_EditorClassIdentifier: 
-  speed: 0
-  catapultIncrease: 0
-  catapultDecrease: 0
+  speed: -1.1
   triggerChance: 0
-  stomachTickIncrease: 0
-  stomachTickDecrease: 0

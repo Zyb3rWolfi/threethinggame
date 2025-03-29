@@ -8,6 +8,7 @@ using UnityEngine.UIElements;
 
 public class PlayerScript : MonoBehaviour
 {
+    [Header("Base Stats")]
     [SerializeField] private float multiplier = 1.0f;
     [SerializeField] private float baseForce = 600f;
     [SerializeField] private float baseTriggerChance = 100f;
@@ -20,17 +21,13 @@ public class PlayerScript : MonoBehaviour
     private bool flying;
 
     public static Action<float> modifySpeed;
-    
-    
+
+    [Header("Modifiers")]
     // Buffs applied by drinks
-    [SerializeField] private float catapultIncrease;
-    [SerializeField] private float speed;
+    [SerializeField] private float speed_modifier;
     [SerializeField] private float triggerChanceModifier;
 
     // Debuffs Applied by drinks 
-    [SerializeField] private float catapultDecrease;
-    [SerializeField] private
-
 
 
     // Start is called before the first frame update
@@ -57,14 +54,12 @@ public class PlayerScript : MonoBehaviour
 
     private void OnDisable()
     {
-
+        MixedDrinkManager.mixerSelected -= ManageMixer;
     }
 
     private void ManageMixer(Modifiers modifiers)
     {
-        speed = speed * modifiers.speed;
-        triggerChance = modifiers.triggerChance;
-        catapultIncrease = modifiers.catapultIncrease;
+        multiplier = modifiers.speed;
     }
 
     public void Wind(InputAction.CallbackContext context){ 
@@ -73,14 +68,13 @@ public class PlayerScript : MonoBehaviour
         if (UnityEngine.Random.Range(0, triggerChance) < 1){
           flying = true;
           rb.constraints = RigidbodyConstraints2D.FreezePositionX;
-          rb.AddForce(Vector2.up * baseForce * (multiplier * catapultIncrease));
+          rb.AddForce(Vector2.up * baseForce * (multiplier));
           return;
         }
         force += windForce;
         triggerChance = triggerChance / 2;
         print(force);
       }
-
     }
 
     void OnCollisionEnter2D(Collision2D collision)
