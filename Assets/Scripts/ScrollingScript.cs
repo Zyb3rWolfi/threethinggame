@@ -49,5 +49,15 @@ public class ScrollingScript : MonoBehaviour
         }
         useMaterial1 = !useMaterial1;
     }
+
+    private void OnEnable()
+    {
+        MixedDrinkManager.mixerSelected += ManageMix;
+    }
+
+    private void ManageMix(Modifiers modifiers)
+    {
+        speed = speed * modifiers.speed;
+    }
 }
 

@@ -12,6 +12,17 @@ public class PlayerScript : MonoBehaviour
     private Rigidbody2D rb;
     private bool flying;
     
+    // Buffs applied by drinks
+    [SerializeField] private float catapultIncrease;
+    [SerializeField] private float speed;
+    [SerializeField] private float triggerChanceModifier;
+
+    // Debuffs Applied by drinks 
+    [SerializeField] private float catapultDecrease;
+    [SerializeField] private
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,17 +37,19 @@ public class PlayerScript : MonoBehaviour
 
     private void OnEnable()
     {
-        MixedDrinkManager.cokeAction += ManageMixer;
+        MixedDrinkManager.mixerSelected += ManageMixer;
     }
 
     private void OnDisable()
     {
-        MixedDrinkManager.cokeAction -= ManageMixer;
 
     }
 
-    private void ManageMixer(MixerSerializable mixer)
+    private void ManageMixer(Modifiers modifiers)
     {
+        speed = speed * modifiers.speed;
+        triggerChance = modifiers.triggerChance;
+        catapultIncrease = modifiers.catapultIncrease;
     }
 
     public void Wind(InputAction.CallbackContext context){ 
@@ -45,7 +58,7 @@ public class PlayerScript : MonoBehaviour
         if (UnityEngine.Random.Range(0, triggerChance) < 1){
           flying = true;
           rb.constraints = RigidbodyConstraints2D.FreezePositionX;
-          rb.AddForce(Vector2.up * baseForce * multiplier);
+          rb.AddForce(Vector2.up * baseForce * (multiplier * catapultIncrease));
           return;
         }
         baseForce += windForce;
