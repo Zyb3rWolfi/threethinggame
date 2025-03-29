@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -23,6 +25,12 @@ public class PlayerScript : MonoBehaviour
     public static Action<float> modifySpeed;
 
     [Header("Modifiers")]
+
+    public float distanceTraveled = 0;   
+    private float currentSpeed;  
+    [SerializeField] private ProgressBar distanceBar;
+    [SerializeField] private float goalDistance = 100f;
+    
     // Buffs applied by drinks
     [SerializeField] private float speed_modifier;
     [SerializeField] private float triggerChanceModifier;
@@ -41,10 +49,14 @@ public class PlayerScript : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (flying){ modifySpeed?.Invoke(((gameObject.transform.position.y - startPos.y)*0.5f));}
+    private void FixedUpdate() {
+      
+      if (flying){
+        currentSpeed = ((gameObject.transform.position.y - startPos.y)*0.5f);
+        modifySpeed?.Invoke(currentSpeed);
+        distanceTraveled += currentSpeed * Time.deltaTime;
+        distanceBar.UpdateProgressBar(distanceTraveled / goalDistance);
+      }
     }
 
     private void OnEnable()
