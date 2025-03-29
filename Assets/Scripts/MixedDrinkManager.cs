@@ -17,8 +17,10 @@ public class MixedDrinkManager : MonoBehaviour
 
     public void OnStartPress()
     {
-        modifiers.speed = debuff.speedDebuff;
-
+        modifiers.speed = buff.speedBuff;
+        modifiers.catapultForce = buff.forceBuff;        
+        modifiers.triggerIncrease = buff.triggerBuff;
+        
         mixerSelected?.Invoke(modifiers);
     }
 }

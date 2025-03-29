@@ -6,5 +6,7 @@ using UnityEngine;
 public class Modifiers : ScriptableObject
 {
     public float speed;
-    public float triggerChance; 
+    public float catapultForce;
+    public bool triggerIncrease; 
 }
+                            

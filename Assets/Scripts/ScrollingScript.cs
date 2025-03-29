@@ -21,7 +21,8 @@ public class ScrollingScript : MonoBehaviour
     private bool useMaterial1 = true;
     private float scrolledDistance = 0f;
 
-    [SerializeField] private float speed_multp;
+    [SerializeField] private float speedMult;
+    [SerializeField] private float catapultInc;
 
     // Update is called once per frame
     void Update()
@@ -56,22 +57,23 @@ public class ScrollingScript : MonoBehaviour
     public void OnEnable()
     {
         PlayerScript.modifySpeed += ChangeSpeed;
-        MixedDrinkManager.mixerSelected += manageModifiers;
+        MixedDrinkManager.mixerSelected += ManageModifiers;
     }
 
     public void OnDisable()
     {
         PlayerScript.modifySpeed -= ChangeSpeed;
-        MixedDrinkManager.mixerSelected -= manageModifiers;
+        MixedDrinkManager.mixerSelected -= ManageModifiers;
     }
 
     private void ChangeSpeed(float newSpeed) {
         speed = newSpeed;
     }
 
-    private void manageModifiers(Modifiers modifiers)
+    private void ManageModifiers(Modifiers modifiers)
     {
-        speed_multp = modifiers.speed;
+        speedMult = modifiers.speed;
+        catapultInc = modifiers.catapultForce;
     }
 }
 

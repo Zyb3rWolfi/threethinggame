@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Coke
   cost: 0
-  speedBuff: 0
+  speedBuff: 1.1
+  forceBuff: 100
