@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -49,6 +50,7 @@ public class ScrollingScript : MonoBehaviour
         }
         useMaterial1 = !useMaterial1;
     }
+<<<<<<< Updated upstream
 
     public void OnEnable()
     {
@@ -63,5 +65,8 @@ public class ScrollingScript : MonoBehaviour
     private void ChangeSpeed(float newSpeed) {
         speed = newSpeed;
     }
+=======
+    
+>>>>>>> Stashed changes
 }
 

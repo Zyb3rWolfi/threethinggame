@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb32a9c40d6e4be499f8d7dc9fd2a646, type: 3}
-  m_Name: Jack Daniels Coke
+  m_Script: {fileID: 11500000, guid: 3e4c5e3b83d744d4bb878a8fd654804b, type: 3}
+  m_Name: Pubs
   m_EditorClassIdentifier: 
-  name: 
-  alcohol: {fileID: 11400000, guid: 0b258350ec80a684ab2e6c2705223e1c, type: 2}
-  mixer: {fileID: 11400000, guid: c8390372345fadb4594e195528ca075d, type: 2}
-  speedDebuff: 0.1
+  Pubs: []
