@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScrollingScript : MonoBehaviour
 {
-    public float speed;
+    [SerializeField] private float speed;
     public float swapDistance = 10f; // Distance threshold for swapping materials
     public bool isMoving = true;
 
@@ -50,14 +50,19 @@ public class ScrollingScript : MonoBehaviour
         useMaterial1 = !useMaterial1;
     }
 
-    private void OnEnable()
+    public void OnEnable()
     {
+        PlayerScript.modifySpeed += ChangeSpeed;
         MixedDrinkManager.mixerSelected += ManageMix;
     }
 
-    private void ManageMix(Modifiers modifiers)
+    public void OnDisable()
     {
-        speed = speed * modifiers.speed;
+        PlayerScript.modifySpeed -= ChangeSpeed;
+    }
+
+    private void ChangeSpeed(float newSpeed) {
+        speed = newSpeed;
     }
 }
 
