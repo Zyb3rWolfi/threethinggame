@@ -13,4 +13,8 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   playerName: 
-  unlockedDrinks: []
+  unlockedDrinks:
+  - {fileID: 11400000, guid: 0b258350ec80a684ab2e6c2705223e1c, type: 2}
+  - {fileID: 11400000, guid: c8390372345fadb4594e195528ca075d, type: 2}
+  SelectedBuffDrink: {fileID: 11400000, guid: c8390372345fadb4594e195528ca075d, type: 2}
+  SelectedDebuffDrink: {fileID: 11400000, guid: 0b258350ec80a684ab2e6c2705223e1c, type: 2}

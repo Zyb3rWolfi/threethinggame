@@ -53,7 +53,6 @@ public class ScrollingScript : MonoBehaviour
     public void OnEnable()
     {
         PlayerScript.modifySpeed += ChangeSpeed;
-        MixedDrinkManager.mixerSelected += ManageMix;
     }
 
     public void OnDisable()

@@ -8,4 +8,7 @@ public class PlayerData : ScriptableObject
 {
     public string playerName;
     public DrinkSerializable[] unlockedDrinks;
+
+    public BuffDrink SelectedBuffDrink;
+    public DebuffDrink SelectedDebuffDrink;
 }
