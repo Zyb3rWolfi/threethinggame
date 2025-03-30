@@ -10,10 +10,12 @@ using UnityEngine.UIElements;
 
 public class PlayerScript : MonoBehaviour
 {
+    [Header("Base Stats")]
     [SerializeField] private float multiplier = 1.0f;
     [SerializeField] private float baseForce = 600f;
     [SerializeField] private float baseTriggerChance = 100f;
     [SerializeField] private float triggerChance;
+    [SerializeField] private bool increasedChance = false;
     [SerializeField] private float windForce = 100f;
     [SerializeField] private float force; 
 
@@ -23,21 +25,14 @@ public class PlayerScript : MonoBehaviour
 
     public static Action<float> modifySpeed;
 
-    public float distanceTraveled = 0;   
+    [Header("Modifiers")]
+
+    public float distanceTraveled;   
     private float currentSpeed;  
     [SerializeField] private ProgressBar distanceBar;
     [SerializeField] private float goalDistance = 100f;
-    
-    // Buffs applied by drinks
-    [SerializeField] private float catapultIncrease;
-    [SerializeField] private float speed;
-    [SerializeField] private float triggerChanceModifier;
 
-    // Debuffs Applied by drinks 
-    [SerializeField] private float catapultDecrease;
-    [SerializeField] private
-
-
+    [SerializeField] private int hasWound;
 
     // Start is called before the first frame update
     void Start()
@@ -47,7 +42,6 @@ public class PlayerScript : MonoBehaviour
         triggerChance = baseTriggerChance;
         startPos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
         print(startPos.x + " " + startPos.y);
-
     }
 
     private void FixedUpdate() {
@@ -63,34 +57,45 @@ public class PlayerScript : MonoBehaviour
     private void OnEnable()
     {
         MixedDrinkManager.mixerSelected += ManageMixer;
+        increasedChance = true;
     }
 
     private void OnDisable()
     {
-
+        MixedDrinkManager.mixerSelected -= ManageMixer;
     }
 
     private void ManageMixer(Modifiers modifiers)
     {
-        speed = speed * modifiers.speed;
-        triggerChance = modifiers.triggerChance;
-        catapultIncrease = modifiers.catapultIncrease;
+        multiplier = modifiers.speed;
+        baseForce += modifiers.catapultForce;
+        increasedChance = modifiers.triggerIncrease;
     }
 
-    public void Wind(InputAction.CallbackContext context){ 
-      if (context.started == true){
-        if (flying) return;
-        if (UnityEngine.Random.Range(0, triggerChance) < 1){
-          flying = true;
-          rb.constraints = RigidbodyConstraints2D.FreezePositionX;
-          rb.AddForce(Vector2.up * baseForce * (multiplier * catapultIncrease));
-          return;
-        }
-        force += windForce;
-        triggerChance = triggerChance / 2;
-        print(force);
-      }
+    public void Wind(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        { if (flying) return;
+            hasWound += 1;
+            
+            if (increasedChance && hasWound > 1)
+            {
+                triggerChance += (triggerChance / 2);
+            }
+            
+            float i = UnityEngine.Random.Range(0, triggerChance);
+            print("Chance: " + i);
+            if (i < 1){
+                flying = true;
+                rb.constraints = RigidbodyConstraints2D.FreezePositionX;
+                rb.AddForce(Vector2.up * baseForce * (multiplier));
+                return;
+            }
 
+            triggerChance /= 2;
+            force += windForce;
+            print(force);
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)

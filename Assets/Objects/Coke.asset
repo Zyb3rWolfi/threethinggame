@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0246b9bb39902154b9a0bd83d9aa2606, type: 3}
   m_Name: Coke
   m_EditorClassIdentifier: 
-  name: 
+  name: Coke
   cost: 0
-  speedBuff: 0
+  speedBuff: 1.1
+  forceBuff: 100
