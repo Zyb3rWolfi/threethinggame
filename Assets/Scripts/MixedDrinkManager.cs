@@ -10,23 +10,17 @@ using UnityEngine;
 public class MixedDrinkManager : MonoBehaviour
 {
     [SerializeField] private Modifiers modifiers;
-    private DebuffDrink debuff;
-    private BuffDrink buff;
+    [SerializeField] private DebuffDrink debuff;
+    [SerializeField] private BuffDrink buff;
 
     public static Action<Modifiers> mixerSelected;
 
-    void Start()
+    public void OnStartPress()
     {
-        // buffs
-        buff.speedBuff = modifiers.speed;
-        buff.catapultIncrease = modifiers.catapultIncrease;
-        buff.stomachTickDecrease = modifiers.stomachTickDecrease;
-
-        // debuffs
-        debuff.speedDebuff = modifiers.speed;
-        debuff.catapultDecrease = modifiers.catapultDecrease;
-        debuff.stomachTickIncrease = modifiers.stomachTickIncrease;
-
+        modifiers.speed = buff.speedBuff;
+        modifiers.catapultForce = buff.forceBuff;        
+        modifiers.triggerIncrease = buff.triggerBuff;
+        
         mixerSelected?.Invoke(modifiers);
     }
 }
