@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e21b998e6cb05a0418e7e34754b6f19a, type: 3}
   m_Name: JD
   m_EditorClassIdentifier: 
-  name: 
+  name: Jack Daniels
   cost: 0
+  type: 1
   speedDebuff: 0
+  catapultDecrease: 0
+  stomachTickIncrease: 0
