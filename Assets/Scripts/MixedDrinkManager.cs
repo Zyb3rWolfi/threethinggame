@@ -12,10 +12,19 @@ public class MixedDrinkManager : MonoBehaviour
     [SerializeField] private Modifiers modifiers;
     [SerializeField] private DebuffDrink debuff;
     [SerializeField] private BuffDrink buff;
-
+    [SerializeField] private PlayerData playerData;
     public static Action<Modifiers> mixerSelected;
 
-    public void OnStartPress()
+    
+    private void Start()
+    {
+        debuff = playerData.SelectedDebuffDrink;
+        buff = playerData.SelectedBuffDrink;
+        AssignModifiers();
+    }
+   
+
+    public void AssignModifiers()
     {
         modifiers.speed = buff.speedBuff;
         modifiers.catapultForce = buff.forceBuff;        

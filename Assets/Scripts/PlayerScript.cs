@@ -15,7 +15,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private float baseForce = 600f;
     [SerializeField] private float baseTriggerChance = 100f;
     [SerializeField] private float triggerChance;
-    [SerializeField] private bool increasedChance = false;
+    [SerializeField] private bool increasedChance;
     [SerializeField] private float windForce = 100f;
     [SerializeField] private float force; 
 
@@ -39,6 +39,7 @@ public class PlayerScript : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         force = baseForce;
+        increasedChance = false; 
         triggerChance = baseTriggerChance;
         startPos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
         print(startPos.x + " " + startPos.y);
@@ -83,9 +84,7 @@ public class PlayerScript : MonoBehaviour
                 triggerChance += (triggerChance / 2);
             }
             
-            float i = UnityEngine.Random.Range(0, triggerChance);
-            print("Chance: " + i);
-            if (i < 1){
+            if (UnityEngine.Random.Range(0, triggerChance) < 1){
                 flying = true;
                 rb.constraints = RigidbodyConstraints2D.FreezePositionX;
                 rb.AddForce(Vector2.up * baseForce * (multiplier));
