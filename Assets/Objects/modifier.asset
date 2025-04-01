@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: modifier
   m_EditorClassIdentifier: 
   speed: 1.1
-  catapultForce: 1.1
+  catapultForce: 100
+  triggerIncrease: 1
