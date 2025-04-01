@@ -114,7 +114,6 @@ public class PlayerScript : MonoBehaviour
             }
             
             float i = UnityEngine.Random.Range(0, triggerChance);
-            print("Chance: " + i);
             if (i < 1){
                 startAnimation?.Invoke(2);
                 HideStreak?.Invoke();
