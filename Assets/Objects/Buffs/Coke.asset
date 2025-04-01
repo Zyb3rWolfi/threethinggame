@@ -15,6 +15,7 @@ MonoBehaviour:
   name: Coke
   cost: 0
   type: 0
+  spriteRenderer: {fileID: 8105207714400842872, guid: 7acce887c517bbf4ea439af22b28e2a4, type: 3}
   speedBuff: 1.1
   forceBuff: 100
   triggerBuff: 1
