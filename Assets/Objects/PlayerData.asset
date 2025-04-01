@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 236b72d43e846344db9d8f01621811ad, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  playerName: 
+  playerName: John
   unlockedDrinks:
   - {fileID: 11400000, guid: 0b258350ec80a684ab2e6c2705223e1c, type: 2}
   - {fileID: 11400000, guid: c8390372345fadb4594e195528ca075d, type: 2}
