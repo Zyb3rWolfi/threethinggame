@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb32a9c40d6e4be499f8d7dc9fd2a646, type: 3}
-  m_Name: Jack Daniels Coke
+  m_Script: {fileID: 11500000, guid: f8cb37f441f0e90458a1ce8c5cb21606, type: 3}
+  m_Name: modifier
   m_EditorClassIdentifier: 
-  alcahol: {fileID: 0}
-  mixer: {fileID: 0}
+  speed: 1.1
+  catapultForce: 1.1

@@ -1,38 +1,27 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Transactions;
 using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 using UnityEditor.Rendering;
 using UnityEngine;
 
 public class MixedDrinkManager : MonoBehaviour
 {
-    [SerializeField] MixerSerializable m_Mixer;
+    [SerializeField] private Modifiers modifiers;
+    [SerializeField] private DebuffDrink debuff;
+    [SerializeField] private BuffDrink buff;
 
-    public static Action<MixerSerializable> cokeAction;
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
+    public static Action<Modifiers> mixerSelected;
 
-    // Update is called once per frame
-    void Update()
+    public void OnStartPress()
     {
+        modifiers.speed = buff.speedBuff;
+        modifiers.catapultForce = buff.forceBuff;        
+        modifiers.triggerIncrease = buff.triggerBuff;
         
-    }
-
-    /*
-    private void OnEnable()
-    {
-        MixedDrinkManager.action += doSomething;
-    }
-
-    void doSomething(double value) {
-    }
-    */
-
-    void DrinkCheck()
-    {
-        cokeAction?.Invoke(m_Mixer);
+        mixerSelected?.Invoke(modifiers);
     }
 }
+
