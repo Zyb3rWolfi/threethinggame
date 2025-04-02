@@ -17,7 +17,6 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private float baseForce = 600f;
     [SerializeField] private float baseTriggerChance = 100f;
     [SerializeField] private float triggerChance;
-    [SerializeField] private bool increasedChance;
     [SerializeField] private float windForce = 100f;
     [SerializeField] private float force; 
     [SerializeField] private float rotationSpeed = 100f;
@@ -82,6 +81,7 @@ public class PlayerScript : MonoBehaviour
     private void OnEnable()
     {
         MixedDrinkManager.mixerSelected += ManageMixer;
+        CarManager.carBoost += DuckFly;
         Catapultanimation.MakeCatapultFly += DuckFly;
         increasedChance = true;
     }
@@ -89,6 +89,7 @@ public class PlayerScript : MonoBehaviour
     private void OnDisable()
     {
         MixedDrinkManager.mixerSelected -= ManageMixer;
+        CarManager.carBoost -= DuckFly;
         Catapultanimation.MakeCatapultFly -= DuckFly;
     }
 

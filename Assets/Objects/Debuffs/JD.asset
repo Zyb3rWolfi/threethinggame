@@ -15,6 +15,5 @@ MonoBehaviour:
   name: Jack Daniels
   cost: 0
   type: 1
+  spriteRenderer: {fileID: -5648859120210045248, guid: 0b7ce81b05153a64ba8d35a324b51645, type: 3}
   speedDebuff: 0
-  catapultDecrease: 0
-  stomachTickIncrease: 0

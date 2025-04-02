@@ -9,13 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0246b9bb39902154b9a0bd83d9aa2606, type: 3}
-  m_Name: Lemonade
+  m_Script: {fileID: 11500000, guid: e21b998e6cb05a0418e7e34754b6f19a, type: 3}
+  m_Name: Rum
   m_EditorClassIdentifier: 
   name: 
   cost: 0
   type: 0
-  spriteRenderer: {fileID: -7517150348156141744, guid: 09dce658c9277e146a69686b66411168, type: 3}
-  speedBuff: 0
-  forceBuff: 0
-  triggerBuff: 0
+  spriteRenderer: {fileID: 3827973999427035209, guid: e9f2b29b75f2d104e93a84ea099fd119, type: 3}
+  speedDebuff: 0
