@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 public class PlayerUI : MonoBehaviour
 {
     private int streak = 0;
+    [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject endGameUI;
     [SerializeField] private GameObject BegginingUI;
     [SerializeField] private TextMeshProUGUI streakText;
@@ -84,9 +85,8 @@ public class PlayerUI : MonoBehaviour
 
     public void onEndButtonPress()
     {
-        SceneManager.LoadScene("AntonScene");
-        SceneManager.UnloadSceneAsync("MainGameScene");
-        print("I PRESS I THINK");
+        mainMenu.SetActive(true);
+        endGameUI.SetActive(false);
     }
     
 }
