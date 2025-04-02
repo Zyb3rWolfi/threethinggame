@@ -12,4 +12,5 @@ public class DrinkSerializable : ScriptableObject
     public string name;
     public int cost; 
     public DrinkType type;
+    public Sprite spriteRenderer;
 }
