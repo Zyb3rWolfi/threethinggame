@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEditor.Rendering;
@@ -22,7 +23,6 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private float rotationSpeed = 100f;
     
     [Header("Modifiers")]
-    [SerializeField] private bool increasedChance = false;
     [SerializeField] public float distanceTraveled;
     [SerializeField] private int hasWound;
     
@@ -34,6 +34,7 @@ public class PlayerScript : MonoBehaviour
     
     [Header("Runtime Variables")]
     [SerializeField] private float currentSpeed;  
+    [SerializeField] private PlayerData playerData;
     private Vector3 startPos;
     private Rigidbody2D rb;
     private bool flying;
@@ -48,6 +49,7 @@ public class PlayerScript : MonoBehaviour
     public static Action HitGround;
     public static Action HideStreak;
     private bool animationStarted;
+
 
 
 
@@ -149,7 +151,8 @@ public class PlayerScript : MonoBehaviour
           triggerChance = baseTriggerChance;
           if (flying)
           {
-            HitGround?.Invoke();  
+            HitGround?.Invoke(); 
+            playerData.money += (int)distanceTraveled; 
           }
           flying = false;
         }

@@ -8,6 +8,7 @@ public class ProgressBar : MonoBehaviour
 {
     [SerializeField] private Slider _progressBar;
     
+    
     /// <summary>
     /// Updates the progress fill amount
     /// </param>

@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject MainPanel;
     
     
+    
     public void ShowDrinksPanel()
     {
         DrinksPanel.SetActive(true);

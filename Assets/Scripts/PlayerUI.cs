@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,6 +14,9 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI streakText;
     [SerializeField] private float popOutDuration = 0.5f;
     [SerializeField] private Vector3 popOutScale = new Vector3(1.5f, 1.5f, 1.5f);
+    [SerializeField] private TextMeshProUGUI moneyText;
+    [SerializeField] private PlayerData playerData;
+
     
     private void OnEnable()
     {
@@ -29,6 +33,10 @@ public class PlayerUI : MonoBehaviour
 
     }
 
+    private void Update() {
+        moneyText.text = "Money : " + playerData.money.ToString();
+    }
+    
     private void ShowEndGame()
     {
         endGameUI.SetActive(true);
@@ -37,6 +45,8 @@ public class PlayerUI : MonoBehaviour
     {
         BegginingUI.gameObject.SetActive(false);
     }
+
+
     private void IncreaseStreak()
     {
         streak += 1;

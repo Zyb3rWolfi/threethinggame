@@ -11,4 +11,5 @@ public class PlayerData : ScriptableObject
 
     public BuffDrink SelectedBuffDrink;
     public DebuffDrink SelectedDebuffDrink;
+    public int money = 0;
 }
