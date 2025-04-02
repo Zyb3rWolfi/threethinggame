@@ -13,6 +13,11 @@ public class Catapultanimation : MonoBehaviour
     {
         PlayerScript.startAnimation += StartAnimationNow;
     }
+    
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
 
     private void StartAnimationNow(int animationIndex)
     {
@@ -30,6 +35,6 @@ public class Catapultanimation : MonoBehaviour
     public void AnimationFinished()
     {
         MakeCatapultFly?.Invoke();
-        this.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 }
